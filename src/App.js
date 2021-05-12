@@ -18,7 +18,10 @@ export default function App() {
     { 
       text: 'React Components',
       isCompleted: false
-       },
+       },{ 
+      text: 'Learn about React',
+    isCompleted: false
+     },
     { 
       text: 'React Props and States',
       isCompleted: false
