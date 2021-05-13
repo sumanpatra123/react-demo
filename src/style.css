@@ -3,7 +3,7 @@ p {
   font-family: Lato;
 }
 .app {
-  background: #209cee;
+  background: #51c5c9;
   height: 100vh;
   padding: 30px;
 }
@@ -13,6 +13,8 @@ p {
   border-radius: 4px;
   max-width: 400px;
   padding: 5px;
+  max-height: 400px;
+  overflow: auto;
 }
 
 .todo {
@@ -25,4 +27,19 @@ p {
   justify-content: space-between;
   margin-bottom: 6px;
   padding: 3px 10px;
+}
+h2 {
+  text-align: center;
+}
+input {
+  margin-right: 10px;
+  margin-bottom: 5px;
+  border-style: none;
+  border-radius: 3px;
+  padding: 3px 10px;
+}
+.remove {
+  cursor: pointer;
+  border: 1px solid black;
+  padding: 3px;
 }

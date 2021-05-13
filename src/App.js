@@ -18,7 +18,8 @@ export default function App() {
     { 
       text: 'React Components',
       isCompleted: false
-       },{ 
+       },
+       { 
       text: 'Learn about React',
     isCompleted: false
      },
@@ -27,6 +28,16 @@ export default function App() {
       isCompleted: false
        }
   ]);
+  React.useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/todos')
+      .then(resp => resp.json())
+      .then(data => {
+        console.log('data', data);
+        setTimeout(() => {
+          setTodos([...todos, ...data]);
+        }, 3000);
+      });
+  }, []);
   const addTodo = text => {
     const newTodos = [...todos, { text }];
     setTodos(newTodos);
@@ -37,8 +48,15 @@ export default function App() {
     newTodos[index].isCompleted = true;
     setTodos(newTodos);
   };
+  const removeTodo = index => {
+    const newTodos = [...todos];
+    newTodos.splice(index, 1);
+    setTodos(newTodos);
+  };
   return (
     <div className="app">
+    <h2>Todo-List</h2>
+    <TodoForm addTodo={addTodo} />
       <div className="todo-list">
         {todos.map((todo, index) => (
           <Todo
@@ -46,10 +64,11 @@ export default function App() {
             index={index}
             todo={todo}
              completeTodo={completeTodo}
+             removeTodo={removeTodo}
           />
         ))}
-        <TodoForm addTodo={addTodo} />
-      </div>
+        {todos.length === 0 ? <div>Add some todos!</div> : null}
+         </div>
     </div>
   );
 }
