@@ -15,9 +15,13 @@ export function TodoForm({ addTodo }) {
       <input
         type="text"
         className="input"
+        placeholder="Add a new item"
         value={value}
         onChange={e => setValue(e.target.value)}
       />
+      <button className="buttonadd" type="submit">
+        Add
+      </button>
     </form>
   );
 }
